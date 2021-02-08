@@ -1,22 +1,101 @@
+$(document).ready(function () {
+    const searchBTN = document.getElementById("get-weather")
+
+    var APIKey = "32c18c9fd14134a691efad95029ba563";
+    //var cityName = $(this).attr("data-name");
+    var cityName = ""
+    // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&Appid=" + APIKey;
+    var queryURL5day = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&Appid=" + APIKey;
+
+    $("#get-weather").on("click", function () {
+        // Capture the User input from the form
+        cityName = $("#citySearch").val()
+        console.log("search button was clicked");
+        console.log(cityName);
+        APIcall(cityName);
+        forecastAPI(cityName);
+        // FORECAST API CALL
+    })
 
 
-var APIKey = "32c18c9fd14134a691efad95029ba563";
-var cityName= $(this).attr("data-name");
 
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&Appid=" + APIKey + "&units=imperial";
-var queryURL5day = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&Appid=" + APIKey + "&units=imperial";
+    function APIcall(cityName) {
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&Appid=" + APIKey;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            // RESPONSE from our FIRST API call
+            console.log('response', response);
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-    }).then(function (response) {
-    console.log('response', reponse);
+            // Capturing LAT and LON data from our FIRST API call
+            var lat = response.coord.lat;
+            var lon = response.coord.lon;
 
-    $('.city').html('<h1>' + response.name + 'Weather Details</h1>');
-    $(".wind").text('Wind Speed:' + response.wind.speed);
-    $(".humidity").text("Humidity: " + response.main.humidity);
+            // OPTION #!
+            // Create new element to load content
+            //           let temp = $("<h1>").text("City: " + response.main.temp);
+            // Append (or add) the new element to the DOM
+            //           $(".test").append(temp);
 
-    var tempF = (response.main.temp = 237.15) + 1.80 + 32;
-    $(".temp").text("Temperature (K): " + response.main.temp);
-    $(".tempF").text("Temperature (F): " + tempF.toFixed(2));
-    });
+            // OPTION #2
+            $('.city').html('<h1> City:' + response.name + '</h1>');
+            var tempF = (response.main.temp = 237.15) + 1.80 + 32;
+            $(".temp").text("Temperature (K): " + response.main.temp);
+            $(".tempF").text("Temperature (F): " + tempF.toFixed(2));
+
+            $(".wind").text('Wind Speed:' + response.wind.speed);
+            $(".humidity").text("Humidity: " + response.main.humidity);
+            var weatherImg = "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png";
+            console.log(weatherImg)
+            $(".weatherImg").attr('src', weatherImg);
+            document.querySelector(".weatherImg").classList.add("visible");
+
+            // Make a SECOND API call
+            var queryUVurl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&Appid=" + APIKey;
+            $.ajax({
+                url: queryUVurl,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+                $(".uvIndex").text("UV Index: " + response.value);
+            });
+
+        });
+        /*
+        function uvIndexAPI(lat, lon) {
+    
+            return NEEDED DATA
+        } 
+        */
+    }
+
+    function forecastAPI(cityName){
+        var queryURL5day = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&Appid=" + APIKey;
+        $.ajax({
+            url: queryURL5day,
+            method: "GET"
+        }).then(function (response){
+            console.log("Forecast...");
+            console.log(response.list);
+            let forecastArr = [];
+            let tempData = response.list;  // Holds 40 objects
+            for(let i = 0; i < tempData.length; i++) {
+                let dateRes = tempData[i].dt_txt.split(' ');
+                // console.log(dateRes);
+                if(dateRes[1] === "15:00:00") {
+                    forecastArr.push(tempData[i]);
+                }
+            }
+            console.log(forecastArr);
+
+            // Now that we parsed the data we want --> We need to show it!
+            //$(".list").text("list: " + response.list);
+            for(let i = 0; i < forecastArr.length; i++) {
+                 $(`#day${i+1}`).html('<h1> Temp:' + forecastArr[i].main.temp + '</h1>');
+            }
+        });
+    }
+    // FORCAST FUNCTION DEFINITION
+    
+});

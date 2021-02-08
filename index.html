@@ -2,98 +2,98 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Weather Dashboard</title>
+  <meta charset="utf-8">
+  <title>Weather Dashboard</title>
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d3bce829f3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <body>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/d3bce829f3.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body text-center bg-dark text-white">
+        <h1> <i class="fas fa-rainbow"></i> Weather Dashboard <i class="fas fa-rainbow"></i></h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Search for a City</h5>
+              <form class="form-inline my-2 my-lg-1">
+                <input id="citySearch" class="form-control mr-sm-2" type="search" placeholder="Enter City" aria-label="Search">
+                <div class="input-group-append"> </div>
+                <button type="button" id="get-weather" class="btn btn-primary"><i class="fas fa-search"></i></button>
+              </form>
+              </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="jumbotron">
+            <div class="card currentCard pb-2 pt-1">
+              <h5 class="card-title mt-2 text-center">Current Forecast</h5>
+              <div class="test"></div>
+              <div class="date"></div>
+              <div class="city"> </div>
+              <div class="tempF"></div>
+              <div class="wind"></div>
+              <div class="humidity"></div>
+              <div class="uvIndex"></div>
+              <img class="weatherImg"></img>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container">
+        <h6>Five Day Forecast in Your City:</h6>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="cardfive">
+              <div class="card-body" id="day1">
+                
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="cardfive">
+              <div class="card-body" id="day2">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="cardfive">
+              <div class="card-body" id="day3">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="cardfive">
+              <div class="card-body" id="day4">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="cardfive">
+              <div class="card-body" id="day5">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-body text-center bg-dark text-white">
-                <h1> <i class="fas fa-rainbow"></i> Weather Dashboard <i class="fas fa-rainbow"></i></h1>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Search for a City</h5>
-                            <form class="form-inline my-2 my-lg-1">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Enter City"
-                                    aria-label="Search">
-                                <div class="input-group-append"> </div>
-                                <button type="button" id="get-weather" class="btn btn-primary"><i
-                                        class="fas fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="jumbotron">
-                    <div class="col">
-                        <div class="card currentCard pb-2 pt-1">
-                            <h5 class="card-title mt-2 text-center">Current Forecast</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                      <div class="card">
-                        <div class="card-body">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                          <div class="card-body">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="card">
-                          <div class="card-body">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="card">
-                          <div class="card-body">
-                          </div>
-                        </div>
-                      </div>
-                       <div class="col">
-                      <div class="card">
-                        <div class="card-body">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-        </div>
 </body>
 
 </html>

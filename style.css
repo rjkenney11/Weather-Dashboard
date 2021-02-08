@@ -1,0 +1,42 @@
+body{
+    font-family: "Garamond", Times, serif;
+}
+
+.jumbotron{
+    text-align: center;
+    margin-top:25px;
+    margin-left: 50px;
+    font-family: "Garamond", Times, serif;
+}
+
+
+.weatherImg.hide{
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+}
+
+.weatherImg.visible{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+}
+
+.cardfive{
+    background-color: steelblue;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+
+h6{
+    text-align: center;
+    font-size: x-large;
+    font-weight: 100;
+}
