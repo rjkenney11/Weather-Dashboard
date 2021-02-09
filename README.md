@@ -1,4 +1,4 @@
-# homework-4
+# homework-6
 
 ## Weather Dashboard
 The objective of this homework was to practice retrieving data from another application's API to use context of one's own.
@@ -13,7 +13,7 @@ In particular we were to use the OpenWeatherMap API to retrieve weather data for
 ## Authors
 <ul>
 <li> Rachel Kenney <a href="https://github.com/rjkenney11" target="_blank">rjkenney11</a> </li>
-<li> Access my Weather Dashboard here:  </li>
+<li> Access my Weather Dashboard <a href="https://rjkenney11.github.io/homework-6/" target="_blank">here</a>  </li>
 </ul>
 
 ## Built With
