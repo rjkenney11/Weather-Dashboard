@@ -3,10 +3,21 @@ $(document).ready(function () {
 
     var APIKey = "32c18c9fd14134a691efad95029ba563";
     //var cityName = $(this).attr("data-name");
-    var cityName = ""
+    //var cityName = ""
     // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&Appid=" + APIKey;
     var queryURL5day = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&Appid=" + APIKey;
+    
+    for (var i = 0; i < localStorage.length; i++) {
 
+        var city = localStorage.getItem(i);
+        // console.log(localStorage.getItem("City"));
+        var cityName = $(".list-group").addClass("list-group-item");
+    
+        cityName.append("<li>" + city + "</li>");
+    }
+    // Key count for local storage 
+    var keyCount = 0;
+    
     $("#get-weather").on("click", function () {
         // Capture the User input from the form
         cityName = $("#citySearch").val()
@@ -16,7 +27,6 @@ $(document).ready(function () {
         forecastAPI(cityName);
         // FORECAST API CALL
     })
-
 
 
     function APIcall(cityName) {
@@ -31,6 +41,11 @@ $(document).ready(function () {
             // Capturing LAT and LON data from our FIRST API call
             var lat = response.coord.lat;
             var lon = response.coord.lon;
+            var cityName = $(".list-group").addClass("list-group-item");
+            cityName.append("<li>" + response.name + "</li>");
+            // Local storage
+            var local = localStorage.setItem(keyCount, response.name);
+            keyCount = keyCount + 1;
 
             // OPTION #!
             // Create new element to load content
@@ -39,13 +54,13 @@ $(document).ready(function () {
             //           $(".test").append(temp);
 
             // OPTION #2
-            $('.city').html('<h1> City:' + response.name + '</h1>');
+            $('.city').html('<h3> City: ' + response.name + '</h3>');
             var tempF = ((response.main.temp - 273.15) * 1.80)+ 32;
             $(".temp").text("Temperature (K): " + response.main.temp);
-            $(".tempF").text("Temperature (F): " + tempF.toFixed(2));
+            $(".tempF").text("Temperature (F): " + tempF.toFixed(2) + '°');
 
-            $(".wind").text('Wind Speed:' + response.wind.speed);
-            $(".humidity").text("Humidity: " + response.main.humidity);
+            $(".wind").text('Wind Speed: ' + response.wind.speed + ' MPH');
+            $(".humidity").text("Humidity: " + response.main.humidity + '%');
             var weatherImg = "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png";
             console.log(weatherImg)
             $(".weatherImg").attr('src', weatherImg);
@@ -60,6 +75,7 @@ $(document).ready(function () {
                 console.log(response);
                 $(".uvIndex").text("UV Index: " + response.value);
             });
+
 
         });
         /*
@@ -92,15 +108,15 @@ $(document).ready(function () {
             // Now that we parsed the data we want --> We need to show it!
             //$(".list").text("list: " + response.list);
             for(let i = 0; i < forecastArr.length; i++) {
-                 $(`#day${i+1}`).append('<h1> Temp:' + (((forecastArr[i].main.temp - 273.15) * 1.80)+ 32).toFixed(2) + '</h1>');
-                 $(`#day${i+1}`).append('<h2> Humidity:' + forecastArr[i].main.humidity + '</h2>');
+                var d = new Date(forecastArr[i].dt_txt);
+                 $(`#day${i+1}`).append('<h3>' + d.toDateString() + '</h3>');
+                 $(`#day${i+1}`).append('<p> Temp: ' + (((forecastArr[i].main.temp - 273.15) * 1.80)+ 32).toFixed(2) + '°' + '</p>');
+                 $(`#day${i+1}`).append('<p> Humidity: ' + forecastArr[i].main.humidity + '%' + '</p>');
                  var $newImg = $("<img></img>");
                  //set image source correctly
                  var weatherImg = "http://openweathermap.org/img/wn/" + forecastArr[i].weather[0].icon + ".png";
                  $newImg.attr('src', weatherImg);
                  $(`#day${i+1}`).append($newImg);
-                 var d = new Date(forecastArr[i].dt_txt);
-                 $(`#day${i+1}`).append('<h3>' + d.toDateString() + '</h3>');
             }
         });
     }

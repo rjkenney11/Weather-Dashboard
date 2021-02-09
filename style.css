@@ -9,6 +9,10 @@ body{
     font-family: "Garamond", Times, serif;
 }
 
+.card{
+    margin-top:25px;
+}
+
 
 .weatherImg.hide{
     display: none;
@@ -29,14 +33,13 @@ body{
 }
 
 .cardfive{
-    background-color: steelblue;
+    background-color: lightsteelblue;
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 50px;
 }
 
-h6{
+h5{
     text-align: center;
-    font-size: 18;
     font-weight: 100;
 }
