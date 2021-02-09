@@ -40,7 +40,7 @@ $(document).ready(function () {
 
             // OPTION #2
             $('.city').html('<h1> City:' + response.name + '</h1>');
-            var tempF = (response.main.temp = 237.15) + 1.80 + 32;
+            var tempF = ((response.main.temp - 273.15) * 1.80)+ 32;
             $(".temp").text("Temperature (K): " + response.main.temp);
             $(".tempF").text("Temperature (F): " + tempF.toFixed(2));
 
@@ -92,7 +92,15 @@ $(document).ready(function () {
             // Now that we parsed the data we want --> We need to show it!
             //$(".list").text("list: " + response.list);
             for(let i = 0; i < forecastArr.length; i++) {
-                 $(`#day${i+1}`).html('<h1> Temp:' + forecastArr[i].main.temp + '</h1>');
+                 $(`#day${i+1}`).append('<h1> Temp:' + (((forecastArr[i].main.temp - 273.15) * 1.80)+ 32).toFixed(2) + '</h1>');
+                 $(`#day${i+1}`).append('<h2> Humidity:' + forecastArr[i].main.humidity + '</h2>');
+                 var $newImg = $("<img></img>");
+                 //set image source correctly
+                 var weatherImg = "http://openweathermap.org/img/wn/" + forecastArr[i].weather[0].icon + ".png";
+                 $newImg.attr('src', weatherImg);
+                 $(`#day${i+1}`).append($newImg);
+                 var d = new Date(forecastArr[i].dt_txt);
+                 $(`#day${i+1}`).append('<h3>' + d.toDateString() + '</h3>');
             }
         });
     }
