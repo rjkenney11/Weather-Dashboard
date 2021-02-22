@@ -43,3 +43,38 @@ h5{
     text-align: center;
     font-weight: 100;
 }
+
+.low {
+    background: #0a0;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .moderate {
+    background: yellow;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .high {
+    background:orange;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .veryHigh {
+    background: red;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .extreme {
+    background: rgb(190, 27, 190);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
