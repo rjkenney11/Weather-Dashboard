@@ -149,10 +149,10 @@ $(document).ready(function () {
         localStorage.setItem("cities", JSON.stringify(citiesToSave));
     }
 
-    clearBtn.addEventListener("click", function () {
-        window.localStorage.clear();
-        citiesDiv.innerHTML = "";
-    });
+    //clearBtn.addEventListener("click", function () {
+        //window.localStorage.clear();
+        //citiesDiv.innerHTML = "";
+    //});
 
     function searchCity(searchInput, addToHistory = true) {
         if (!searchInput) {
