@@ -66,7 +66,7 @@ $(document).ready(function () {
             document.querySelector(".weatherImg").classList.add("visible");
 
             // Make a SECOND API call
-            var queryUVurl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&Appid=" + APIKey;
+            var queryUVurl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&Appid=" + APIKey;
             $.ajax({
                 url: queryUVurl,
                 method: "GET"
