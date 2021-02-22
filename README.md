@@ -6,7 +6,7 @@ The objective of this homework was to practice retrieving data from another appl
 
 
 ## Screenshots
-![image](https://user-images.githubusercontent.com/74163812/107312983-ace41c00-6a5f-11eb-9e90-ce05113e0d06.png)
+![image](https://user-images.githubusercontent.com/74163812/108654429-a9588800-7496-11eb-9007-1647b8136749.png)
 ![image](https://user-images.githubusercontent.com/74163812/107313049-c5eccd00-6a5f-11eb-99f3-18c34a9cc172.png)
 
 
