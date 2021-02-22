@@ -60,7 +60,7 @@ $(document).ready(function () {
 
             $(".wind").text('Wind Speed: ' + response.wind.speed + ' MPH');
             $(".humidity").text("Humidity: " + response.main.humidity + '%');
-            var weatherImg = "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png";
+            var weatherImg = "https://openweathermap.org/img/wn/" + response.weather[0].icon + ".png";
             console.log(weatherImg)
             $(".weatherImg").attr('src', weatherImg);
             document.querySelector(".weatherImg").classList.add("visible");
@@ -128,7 +128,7 @@ $(document).ready(function () {
                 $(`#day${i + 1}`).append('<p> Humidity: ' + forecastArr[i].main.humidity + '%' + '</p>');
                 var $newImg = $("<img></img>");
                 //set image source correctly
-                var weatherImg = "http://openweathermap.org/img/wn/" + forecastArr[i].weather[0].icon + ".png";
+                var weatherImg = "https://openweathermap.org/img/wn/" + forecastArr[i].weather[0].icon + ".png";
                 $newImg.attr('src', weatherImg);
                 $(`#day${i + 1}`).append($newImg);
             }
