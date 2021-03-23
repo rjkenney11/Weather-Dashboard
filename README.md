@@ -11,7 +11,7 @@ The objective of this homework was to practice retrieving data from another appl
 ## Authors
 <ul>
 <li> Rachel Kenney <a href="https://github.com/rjkenney11" target="_blank">rjkenney11</a> </li>
-<li> Access my Weather Dashboard <a href="https://rjkenney11.github.io/homework-6/" target="_blank">here</a>  </li>
+<li> Access my Weather Dashboard <a href="https://rjkenney11.github.io/Weather-Dashboard/" target="_blank">here</a>  </li>
 </ul>
 
 ## Built With
