@@ -1,5 +1,5 @@
 # Weather Dashboard
-Used the OpenWeatherMap API to retrieve weather data for cities, inluding the temperature, wind speed and humidity to practice retrieving data from another application's API to use context of my own. 
+Used the OpenWeatherMap API to create an app that retrieves weather data for cities, inluding the temperature, wind speed and humidity.
 
 
 ## Screenshots
