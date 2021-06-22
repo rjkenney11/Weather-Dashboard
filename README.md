@@ -1,6 +1,5 @@
 # Weather Dashboard
-The objective of this homework was to practice retrieving data from another application's API to use context of one's own.
-<p>In particular we were to use the OpenWeatherMap API to retrieve weather data for cities, inluding the temperature, wind speed and humidity. </p>
+Used the OpenWeatherMap API to retrieve weather data for cities, inluding the temperature, wind speed and humidity to practice retrieving data from another application's API to use context of my own. 
 
 
 ## Screenshots
